@@ -1,0 +1,90 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Lost and Found Section */
+.lost-and-found-container {
+    padding: 20px;
+    background-color: rgb(59, 145, 226);
+    color: rgba(174, 68, 42, 0.887);
+    min-height: 100vh;
+}
+
+.header {
+    text-align: center;
+    color: rgb(173, 49, 35);
+}
+
+/* Upload Section */
+.upload-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+    color: white;
+}
+
+.upload-section input[type="file"] {
+    margin-top: 10px;
+}
+
+.image-preview {
+    width: 100px;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+.input-field {
+    width: 300px;
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 1em;
+}
+
+.textarea {
+    height: 80px;
+}
+
+.upload-button {
+    background-color: #8d4a03;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+/* Announcements Section */
+.announcements-section {
+    text-align: center;
+}
+
+.announcements-section h2,
+.announcements-section h3 {
+    color: rgb(196, 50, 50);
+}
+
+.announcement-card {
+    background-color: #37474f;
+    padding: 15px;
+    margin: 10px auto;
+    border-radius: 8px;
+    max-width: 300px;
+    color: white;
+}
+
+.announcement-image {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.announcement-card h3 {
+    margin-top: 10px;
+}
+
+.announcement-card p {
+    margin: 5px 0;
+}
