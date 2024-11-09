@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import LostAndFound from './components/LostAndFound';
 import Food from './components/Food';
 import FoodEditor from './components/FoodEditor';
+<<<<<<< HEAD
 import { LaundryProvider } from './components/laundry_context';
 import Laundry from './components/laundry';
 
@@ -30,6 +31,30 @@ function App() {
         </div>
       </Router>
     </LaundryProvider>
+=======
+import BusSchedule from './components/BusSchedule';
+function App() {
+  return (
+    <Router>
+      <div className="App">
+        {/* Navigation Links */}
+        <nav>
+          <Link to="/">Lost and Found</Link>
+          <Link to="/food">View Menu</Link>
+          <Link to="/food-editor">Edit Menu</Link>
+          <Link to="/BusSchedule">BusSchedule</Link>
+        </nav>
+
+        {/* Route Definitions */}
+        <Routes>
+          <Route path="/" element={<LostAndFound />} />
+          <Route path="/food" element={<Food />} />
+          <Route path="/food-editor" element={<FoodEditor />} />
+          <Route path="/BusSchedule" element={<BusSchedule />} />
+        </Routes>
+      </div>
+    </Router>
+>>>>>>> 1adac7df9f91a66837c7731589a1558ead8ddf2a
   );
 }
 
