@@ -1,12 +1,8 @@
-import React from 'react';
-import Laundry from './laundry';
-
 function App() {
     return (
-        <div>
-            <Laundry />
-        </div>
+      <div className="App">
+        <h1>Welcome to My Webpage!</h1>
+      </div>
     );
-}
-
-export default App;
+  }
+  

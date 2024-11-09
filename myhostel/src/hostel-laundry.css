@@ -1,0 +1,29 @@
+/* src/LaundryPage.css */
+.laundry-page {
+    text-align: center;
+    font-family: Arial, sans-serif;
+  }
+  
+  .laundry-services ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .laundry-booking form {
+    display: inline-block;
+    text-align: left;
+    margin-top: 20px;
+  }
+  
+  button {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
