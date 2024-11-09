@@ -1,0 +1,91 @@
+/* Laundry.css */
+
+.laundry-page {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #2b2b2b; /* Dark background */
+    color: #f1f1f1; /* Light text color for contrast */
+  }
+  
+  .laundry-left,
+  .laundry-right {
+    flex: 1;
+    background-color: #3a3a3a; /* Slightly lighter than the page */
+    padding: 20px;
+    border-radius: 8px;
+    margin: 10px;
+  }
+  
+  .profile img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+  }
+  
+  .profile button {
+    background-color: #ffc107; /* Yellow button color */
+    color: #333;
+    border: none;
+    padding: px 20px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .profile button:hover {
+    background-color: #e0a800; /* Slightly darker on hover */
+  }
+  
+  .laundry-form select,
+  .laundry-form input {
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+  }
+  
+  .laundry-form button {
+    background-color: #007bff; /* Blue submit button */
+    color: white;
+    font-weight: bold;
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .laundry-form button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+  }
+  
+  .status img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 10px;
+    transition: transform 0.2s;
+  }
+  
+  .status img:hover {
+    transform: scale(1.1); /* Slight zoom on hover */
+  }
+  
+  .status div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+  }
+  
+  .status p {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #ffc107; /* Yellow text for the counts */
+  }
+  
