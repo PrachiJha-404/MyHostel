@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import LostAndFound from './components/LostAndFound';
 import Food from './components/Food';
 import FoodEditor from './components/FoodEditor';
-
+import BusSchedule from './components/BusSchedule';
 function App() {
   return (
     <Router>
@@ -14,6 +14,7 @@ function App() {
           <Link to="/">Lost and Found</Link>
           <Link to="/food">View Menu</Link>
           <Link to="/food-editor">Edit Menu</Link>
+          <Link to="/BusSchedule">BusSchedule</Link>
         </nav>
 
         {/* Route Definitions */}
@@ -21,6 +22,7 @@ function App() {
           <Route path="/" element={<LostAndFound />} />
           <Route path="/food" element={<Food />} />
           <Route path="/food-editor" element={<FoodEditor />} />
+          <Route path="/BusSchedule" element={<BusSchedule />} />
         </Routes>
       </div>
     </Router>
