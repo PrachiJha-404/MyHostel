@@ -37,7 +37,7 @@ function OpeningPage() {
                         </button>
                         <button
                             className="btn1"
-                            onClick={() => navigate("/sign-in")} // Navigate to sign-in page
+                            onClick={() => navigate("/sign-up")} // Navigate to sign-in page
                         >
                             Sign In
                         </button>

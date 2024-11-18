@@ -10,6 +10,7 @@ import StudentLogin from './components/StudentLogin';
 import ContactUsPage from './components/contact';
 import Front from './components/front'; // Import the Front component
 import './App.css'; // Import App styles
+import SignUpPage from "./components/sign-up";    // Import your sign-up page
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -62,6 +63,7 @@ function App() {
           {/* Route to Student Login */}
           <Route path="/student-login" element={<StudentLogin login={login} />} />
           <Route path="/contact" element={<ContactUsPage />} />
+          <Route path="/sign-up" element={<SignUpPage />} />
           {/* Protected Routes */}
           <Route element={<ProtectedRoute isAuthenticated={isAuthenticated} redirectTo="/student-login" />}>
             <Route path="/lost-and-found" element={<LostAndFound />} />
