@@ -8,14 +8,16 @@ body {
 /* Lost and Found Section */
 .lost-and-found-container {
     padding: 20px;
-    background-color: rgb(59, 145, 226);
+    background-color: linear-gradient(135deg, #6EC1E4, #A0D9D9);
     color: rgba(174, 68, 42, 0.887);
     min-height: 100vh;
 }
 
-.header {
+.header,
+h1 {
     text-align: center;
     color: rgb(173, 49, 35);
+
 }
 
 /* Upload Section */
