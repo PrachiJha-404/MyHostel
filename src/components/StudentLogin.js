@@ -1,5 +1,5 @@
-// src/components/StudentLogin.js
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate hook
 import "./StudentLogin.css";
 
 export default function StuLog({ login }) {
@@ -11,6 +11,8 @@ export default function StuLog({ login }) {
     const validUsername = "student123";
     const validPassword = "password123";
 
+    const navigate = useNavigate(); // Initialize navigate
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -18,6 +20,7 @@ export default function StuLog({ login }) {
         if (username === validUsername && password === validPassword) {
             // Call login function passed via props
             login();
+            navigate("/laundry"); // Redirect to Laundry page (or any page you'd like)
         } else {
             // Show error message if credentials are incorrect
             setError("Invalid username or password");

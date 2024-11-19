@@ -1,0 +1,25 @@
+.warden-dashboard {
+    text-align: center;
+    padding: 20px;
+}
+
+.warden-links {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.warden-links a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.warden-links a:hover {
+    background-color: #0056b3;
+}
