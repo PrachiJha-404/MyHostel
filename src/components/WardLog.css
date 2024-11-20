@@ -8,7 +8,7 @@ html {
 }
 
 .Wardlogin {
-    background-image: url('/Users/pragati/Documents/GitHub/MyHostel/public/hostellog.jpg');
+    background-image: url('/public/hostellog.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

@@ -12,6 +12,7 @@ function WardenDashboard() {
                 <Link to="/food-editor">Edit Food Menu</Link>
                 <Link to="/laundry">Manage Laundry</Link>
                 <Link to="/bus-schedule-edit">Edit Bus Schedule</Link>
+                <Link to="/student-details">View Student Details</Link> 
             </div>
         </div>
     );

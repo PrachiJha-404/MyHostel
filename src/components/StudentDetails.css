@@ -1,0 +1,39 @@
+/* src/components/StudentDetails.css */
+
+.student-details {
+    padding: 20px;
+}
+
+.student-details h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.student-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.student-card {
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 8px;
+    width: 250px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.student-card h3 {
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+.student-pic {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}

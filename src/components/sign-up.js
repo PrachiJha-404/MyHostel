@@ -3,23 +3,22 @@ import { useNavigate } from "react-router-dom"; // Import useNavigate
 
 function SignUpPage() {
     const navigate = useNavigate();
-    const handleSubmit = async(event) => {
+    
+    const handleSubmit = async (event) => {
         event.preventDefault(); // Prevent page refresh
 
-        // Access form data using the form.elements property
         const form = event.target;
         const name = form.elements.name.value;
         const email = form.elements.email.value;
         const phone = form.elements.phone.value;
-        const hostel = form.elements.hostel.value;  // Get hostel value
-        const passwd = form.elements.passwd.value;  // Get password value
+        const hostel = form.elements.hostel.value;
+        const passwd = form.elements.passwd.value;
 
         const userData = { name, email, phone, passwd, hostel };
 
         alert(`Welcome, ${name}! Your details have been submitted:\nEmail: ${email}\nPhone: ${phone}`);
 
         try {
-            // Send POST request to your API endpoint to save the user data (replace with actual API URL)
             const response = await fetch('http://localhost:3000/sign-up', {
                 method: 'POST',
                 headers: {
@@ -29,29 +28,24 @@ function SignUpPage() {
             });
 
             if (!response.ok) {
-                throw new Error('Failed to create account');
+                // If response is not ok, throw an error with a message from response
+                const errorData = await response.json();
+                throw new Error(errorData.message || 'Failed to create account');
             }
 
-            // Show a success alert (optional)
-            const errorMessage = await response.text();
+            // If everything is successful, reset form and redirect
+            form.reset();
             alert('Account created successfully!');
-
-            // Redirect to the student-login page after successful submission
             navigate('/student-login');
         } catch (error) {
-            // Handle any errors that occur during the API request
-            alert('Error: ' + error.message);
+            alert('Error: ' + error.message); // Show the error message from the catch block
         }
-
-        // Optionally clear the form fields
-        form.reset();
     };
-
 
     return (
         <div className="signin-page">
             <div className="signin-form">
-                <h2>Sign In</h2>
+                <h2>Sign Up</h2>
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="name">Name:</label>
                     <input type="text" id="name" name="name" placeholder="Enter your name" required />
@@ -68,12 +62,11 @@ function SignUpPage() {
                     <label htmlFor="passwd">Password:</label>
                     <input type="password" id="passwd" name="passwd" placeholder="Enter your password" required />
 
-                    <button type="submit">Sign In</button>
+                    <button type="submit">Sign Up</button>
                 </form>
             </div>
         </div>
     );
 }
 
-// Export the SignUpPage component as default
 export default SignUpPage;

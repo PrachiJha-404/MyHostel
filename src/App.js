@@ -13,6 +13,9 @@ import WardLog from './components/WardLog';
 import WardenDashboard from './components/WardenDashboard';
 import './App.css';
 import SignUpPage from './components/sign-up';
+import StudentDashboard from './components/StudentDashboard';
+import StudentDetails from "./components/StudentDetails";
+
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false); // Student authentication
@@ -27,9 +30,10 @@ function App() {
   const wardenLogout = () => setIsWardenAuthenticated(false);
 
   // Protected Route Wrapper
-  const ProtectedRoute = ({ isAuthenticated, redirectTo }) => {
-    return isAuthenticated ? <Outlet /> : <Navigate to={redirectTo} />;
-  };
+  const ProtectedRoute = ({ isAuthenticated, redirectTo, children }) => {
+    return isAuthenticated ? children : <Navigate to={redirectTo} />;
+};
+
 
   return (
     <Router>
@@ -89,19 +93,37 @@ function App() {
           <Route path="/laundry" element={<Laundry />} />
 
           {/* Student Protected Routes */}
-          <Route element={<ProtectedRoute isAuthenticated={isAuthenticated} redirectTo="/student-login" />}>
-            <Route path="/food" element={<Food />} />
-          </Route>
+          <Route
+            path="/food"
+            element={
+              <ProtectedRoute isAuthenticated={isAuthenticated} redirectTo="/student-login">
+                <Food />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/student-dashboard"
+            element={
+              <ProtectedRoute isAuthenticated={isAuthenticated} redirectTo="/student-login">
+                <StudentDashboard />
+              </ProtectedRoute>
+            }
+          />
+
 
           {/* Warden Protected Routes */}
           <Route element={<ProtectedRoute isAuthenticated={isWardenAuthenticated} redirectTo="/warden-login" />}>
             <Route path="/food-editor" element={<FoodEditor />} />
             <Route path="/bus-schedule-edit" element={<BusScheduleEdit />} />
+            <Route path="/student-details" element={<StudentDetails />} />
           </Route>
 
           {/* Bus Schedule - Accessible by both Warden and Student */}
           <Route path="/bus-schedule" element={<BusSchedule />} />
+          
         </Routes>
+
+        
       </div>
     </Router>
   );

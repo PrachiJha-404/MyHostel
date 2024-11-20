@@ -7,25 +7,46 @@ export default function StuLog({ login }) {
     const [password, setPassword] = useState("");
     const [error, setError] = useState(""); // To store error message
 
-    // Dummy credentials for testing
-    const validUsername = "student123";
-    const validPassword = "password123";
+    
 
     const navigate = useNavigate(); // Initialize navigate
 
-    const handleSubmit = (e) => {
+    
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Check if the credentials are correct
-        if (username === validUsername && password === validPassword) {
-            // Call login function passed via props
-            login();
-            navigate("/laundry"); // Redirect to Laundry page (or any page you'd like)
-        } else {
-            // Show error message if credentials are incorrect
-            setError("Invalid username or password");
+        // Prepare data to send to the backend
+        const loginData = {
+            email: username,  // 'username' corresponds to the email field
+            password: password
+        };
+
+    
+        try {
+            const response = await fetch("http://localhost:3000/student-login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(loginData), // Use email and password
+            });
+    
+            const data = await response.json();
+    
+            if (response.ok) {
+                // Redirect to Laundry or any other page upon success
+                alert("Login")
+                navigate("/laundry");
+            } else {
+                // Display error message from the server
+                setError(data.message || "Invalid credentials");
+            }
+        } catch (error) {
+            setError("Something went wrong. Please try again later.");
         }
     };
+    
 
     return (
         <div className="stulogin">
