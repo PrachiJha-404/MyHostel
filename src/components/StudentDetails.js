@@ -5,35 +5,22 @@ import "./StudentDetails.css";
 function StudentDetails() {
     const [students, setStudents] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState("");
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         const fetchStudents = async () => {
             try {
-                console.log('Fetching students...'); // Debug log
                 const response = await axios.get("http://localhost:3000/api/students", {
                     headers: {
                         'Content-Type': 'application/json',
                         'Accept': 'application/json'
-                    },
-                    withCredentials: true
+                    }
                 });
 
-                console.log('Response:', response); // Debug log
-
-                if (response.data) {
-                    console.log('Fetched students:', response.data);
-                    setStudents(response.data);
-                } else {
-                    setError("No student data received");
-                }
+                setStudents(response.data);
+                setLoading(false);
             } catch (err) {
-                console.error('Error details:', err.response || err); // Enhanced error logging
-                setError(
-                    err.response?.data?.message || 
-                    "Failed to fetch student data. Please ensure the server is running."
-                );
-            } finally {
+                setError(err.response?.data?.message || "Failed to fetch students");
                 setLoading(false);
             }
         };
@@ -41,51 +28,43 @@ function StudentDetails() {
         fetchStudents();
     }, []);
 
-    if (loading) {
-        return (
-            <div className="student-details">
-                <h1>Student Details</h1>
-                <div className="loading-spinner">Loading student data...</div>
-            </div>
-        );
-    }
-
-    if (error) {
-        return (
-            <div className="student-details">
-                <h1>Student Details</h1>
-                <div className="error-message">
-                    <p>Error: {error}</p>
-                    <button onClick={() => window.location.reload()}>Retry</button>
-                    <p className="error-help">
-                        Make sure your server is running on port 3000 and MongoDB is connected.
-                    </p>
-                </div>
-            </div>
-        );
-    }
+    if (loading) return <div>Loading students...</div>;
+    if (error) return <div>Error: {error}</div>;
 
     return (
         <div className="student-details">
             <h1>Student Details</h1>
             {students.length === 0 ? (
-                <div className="no-students">
-                    <p>No students found in the database.</p>
-                    <p>Try adding some students through the registration form.</p>
-                </div>
+                <p>No students found</p>
             ) : (
-                <div className="student-list">
-                    {students.map((student) => (
-                        <div key={student._id} className="student-card">
-                            <h3>{student.name}</h3>
-                            <div className="student-info">
-                                <p><strong>Email:</strong> {student.email}</p>
-                                <p><strong>Hostel:</strong> {student.hostel}</p>
-                                <p><strong>Phone:</strong> {student.phone}</p>
-                            </div>
-                        </div>
-                    ))}
-                </div>
+                <>
+                    <div className="student-summary">
+                        <h2>Overview</h2>
+                        <p>Total Students: {students.length}</p>
+                        <p>Unique Hostels: {new Set(students.map(s => s.hostel)).size}</p>
+                    </div>
+
+                    <table className="student-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Hostel</th>
+                                <th>Phone</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {students.map((student) => (
+                                <tr key={student._id}>
+                                    <td>{student.name}</td>
+                                    <td>{student.email}</td>
+                                    <td>{student.hostel}</td>
+                                    <td>{student.phone}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </>
             )}
         </div>
     );

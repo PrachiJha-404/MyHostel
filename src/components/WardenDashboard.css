@@ -1,25 +1,71 @@
 .warden-dashboard {
-    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.warden-header {
+    background-color: #f4f4f4;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+
+.warden-header h1 {
+    margin: 0;
+    color: #62d019;
+}
+
+.dashboard-nav {
+    display: flex;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.dashboard-nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.dashboard-nav a:hover {
+    color: #007bff;
+}
+
+.student-summary {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 20px;
 }
 
-.warden-links {
+.summary-stats {
     display: flex;
-    flex-direction: column;
-    gap: 15px;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    color: #666;
+}
+
+.students-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.students-table th, 
+.students-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+.students-table thead {
+    background-color: #f4f4f4;
+}
+
+.loading, .error {
+    text-align: center;
+    color: #666;
     margin-top: 20px;
-}
-
-.warden-links a {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 16px;
-}
-
-.warden-links a:hover {
-    background-color: #0056b3;
 }

@@ -12,7 +12,7 @@ function SignUpPage() {
         const email = form.elements.email.value;
         const phone = form.elements.phone.value;
         const hostel = form.elements.hostel.value;
-        const passwd = form.elements.passwd.value;
+        const passwd = form.elements.passwd.value; 
 
         const userData = { name, email, phone, passwd, hostel };
 

@@ -41,9 +41,14 @@
   cursor: pointer;
 }
 
-.logout-button:hover {
-  background-color: #e60000;
+.logout-button {
+  font-size: 12px; /* Reduce font size */
+  padding: 5px 10px; /* Smaller padding */
+  border-radius: 5px; /* Optional: round the corners */
+  height: 30px; /* Adjust button height */
+  width: auto; /* Adjust button width to content */
 }
+
 
 .App-nav {
   display: flex;
