@@ -1,52 +1,44 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate hook
+import { useNavigate } from "react-router-dom";
 import "./StudentLogin.css";
 
 export default function StuLog({ login }) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [error, setError] = useState(""); // To store error message
-
-    
-
-    const navigate = useNavigate(); // Initialize navigate
-
-    
+    const [error, setError] = useState("");
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Prepare data to send to the backend
         const loginData = {
-            email: username,  // 'username' corresponds to the email field
+            email: username,
             password: password
         };
 
-    
         try {
             const response = await fetch("http://localhost:3000/student-login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(loginData), // Use email and password
+                body: JSON.stringify(loginData),
             });
     
             const data = await response.json();
     
             if (response.ok) {
-                // Redirect to Laundry or any other page upon success
-                alert("Login")
-                navigate("/laundry");
+                // Call the login function from props to update authentication state
+                login();
+                // Redirect to student dashboard instead of laundry
+                navigate("/student-dashboard");
             } else {
-                // Display error message from the server
                 setError(data.message || "Invalid credentials");
             }
         } catch (error) {
             setError("Something went wrong. Please try again later.");
         }
     };
-    
 
     return (
         <div className="stulogin">
@@ -74,7 +66,7 @@ export default function StuLog({ login }) {
                     <button type="submit">Login</button>
                 </form>
 
-                {error && <p style={{ color: "red" }}>{error}</p>} {/* Display error if invalid credentials */}
+                {error && <p style={{ color: "red" }}>{error}</p>}
             </div>
         </div>
     );
