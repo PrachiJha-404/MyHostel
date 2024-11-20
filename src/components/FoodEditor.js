@@ -1,4 +1,3 @@
-// src/components/FoodEditor.js
 import React, { useContext } from 'react';
 import './FoodEditor.css';
 import { MenuContext } from '../context/MenuContext';
@@ -13,10 +12,30 @@ const FoodEditor = () => {
         });
     };
 
+    const handleSave = async () => {
+        // Assuming you want to save the updated menu to the backend
+        try {
+            const response = await fetch('http://localhost:5000/api/menu', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(menu),
+            });
+
+            if (response.ok) {
+                console.log("Menu saved successfully");
+            } else {
+                console.error("Failed to save menu");
+            }
+        } catch (error) {
+            console.error("Error saving menu:", error);
+        }
+    };
+
     return (
         <div className="food-editor-container">
             <h1>Edit Food Menu</h1>
-
             <div className="menu-category">
                 <h2>Vegetarian</h2>
                 <label>
@@ -44,7 +63,6 @@ const FoodEditor = () => {
                     />
                 </label>
             </div>
-
             <div className="menu-category">
                 <h2>Non-Vegetarian</h2>
                 <label>
@@ -72,8 +90,7 @@ const FoodEditor = () => {
                     />
                 </label>
             </div>
-
-            <button className="save-button" onClick={() => console.log("Menu saved")}>
+            <button className="save-button" onClick={handleSave}>
                 Save Menu
             </button>
         </div>
