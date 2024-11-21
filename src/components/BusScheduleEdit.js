@@ -1,10 +1,10 @@
-// BusScheduleEdit.js
 import React, { useState } from "react";
 import { useBusSchedule } from "./BusScheduleContext";
+import axios from "axios";
 import "./BusScheduleEdit.css";
 
 export default function BusScheduleEdit() {
-    const { busRoutes, updateBusRoute } = useBusSchedule();
+    const { busRoutes, setBusRoutes } = useBusSchedule();
     const [editingRow, setEditingRow] = useState(null);
     const [editDrop, setEditDrop] = useState("");
     const [editPickup, setEditPickup] = useState("");
@@ -15,9 +15,24 @@ export default function BusScheduleEdit() {
         setEditPickup(bus.pickup);
     };
 
-    const handleSave = (id) => {
-        updateBusRoute(id, editDrop, editPickup);
-        setEditingRow(null);
+    const handleSave = async (id) => {
+        try {
+            const response = await axios.put(
+                `http://localhost:3000/api/bus-routes/${id}`,
+                { drop: editDrop, pickup: editPickup }
+            );
+            
+            // Update the bus route in the state after successful update
+            setBusRoutes((prevRoutes) => 
+                prevRoutes.map((bus) =>
+                    bus.id === id ? { ...bus, drop: editDrop, pickup: editPickup } : bus
+                )
+            );
+            
+            setEditingRow(null);  // Close the editing row
+        } catch (error) {
+            console.error('Error updating bus route:', error);
+        }
     };
 
     return (

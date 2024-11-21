@@ -18,6 +18,7 @@ const Laundry = () => {
         setWashingCount(washingCount + count);
       } else if (selectedOption === 'Kept for drying') {
         setDryingCount(dryingCount + count);
+        setWashingCount(washingCount - count)
       }else if (selectedOption === 'Collected') {
         setDryingCount(dryingCount - count);
       }
