@@ -1,9 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
+import './sign-up.css'
 
 function SignUpPage() {
     const navigate = useNavigate();
-    
+
     const handleSubmit = async (event) => {
         event.preventDefault(); // Prevent page refresh
 
@@ -12,11 +13,11 @@ function SignUpPage() {
         const email = form.elements.email.value;
         const phone = form.elements.phone.value;
         const hostel = form.elements.hostel.value;
-        const passwd = form.elements.passwd.value; 
+        const passwd = form.elements.passwd.value;
 
         const userData = { name, email, phone, passwd, hostel };
 
-        alert(`Welcome, ${name}! Your details have been submitted:\nEmail: ${email}\nPhone: ${phone}`);
+        
 
         try {
             const response = await fetch('http://localhost:3000/sign-up', {
@@ -28,17 +29,15 @@ function SignUpPage() {
             });
 
             if (!response.ok) {
-                // If response is not ok, throw an error with a message from response
                 const errorData = await response.json();
                 throw new Error(errorData.message || 'Failed to create account');
             }
 
-            // If everything is successful, reset form and redirect
             form.reset();
             alert('Account created successfully!');
             navigate('/student-login');
         } catch (error) {
-            alert('Error: ' + error.message); // Show the error message from the catch block
+            alert('Error: ' + error.message);
         }
     };
 

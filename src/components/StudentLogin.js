@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./StudentLogin.css";
+import "./StudentLogin.css"; // Import the CSS file
 
 export default function StuLog({ login }) {
     const [username, setUsername] = useState("");

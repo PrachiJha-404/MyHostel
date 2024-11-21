@@ -1,63 +1,75 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #e7f3ff; /* Light blue background */
+  margin: 0;
+  padding: 0;
+}
+
 .signin-page {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: linear-gradient(135deg, #A0C4FF, #B0E0E6);
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+}
+
+.signin-form {
+  background-color: #ffffff; /* White background for the form */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 400px; /* Fixed width for the form */
+}
+
+h2 {
+  color: #007bff; /* Blue color for the heading */
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: bold;
+  color: #333; /* Darker text color for labels */
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"] {
+  width: 100%; /* Full width */
+  padding: 10px;
+  margin: 10px 0; /* Space between inputs */
+  border: 1px solid #007bff; /* Blue border */
+  border-radius: 4px;
+  box-sizing: border-box; /* Include padding and border in element's total width and height */
+  transition: border-color 0.3s; /* Smooth transition for border color */
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+input[type="password"]:focus {
+  border-color: #0056b3; /* Darker blue on focus */
+  outline: none; /* Remove outline */
+}
+
+button {
+  background-color: #007bff; /* Blue button */
+  color: white; /* White text */
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%; /* Full width */
+  font-size: 16px; /* Font size */
+  transition: background-color 0.3s; /* Smooth transition for background color */
+}
+
+button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+@media (max-width: 500px) {
   .signin-form {
-    background: #fff;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 350px;
+      width: 90%; /* Responsive width on smaller screens */
   }
-  
-  .signin-form h2 {
-    margin-bottom: 20px;
-    color: #333;
-    text-align: center;
-  }
-  
-  .signin-form label {
-    display: block;
-    margin: 10px 0 5px;
-    font-size: 0.9rem;
-    color: #555;
-  }
-  
-  .signin-form input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 1rem;
-  }
-  
-  .signin-form input:focus {
-    outline: none;
-    border-color: #7a86ff;
-    box-shadow: 0 0 5px rgba(122, 134, 255, 0.5);
-  }
-  
-  .signin-form button {
-    width: 100%;
-    padding: 10px;
-    background: #7a86ff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    cursor: pointer;
-  }
-  
-  .signin-form button:hover {
-    background: #5b65e0;
-  }
-  
-  .signin-form button:focus {
-    outline: none;
-    box-shadow: 0 0 5px rgba(122, 134, 255, 0.5);
-  }
+}
